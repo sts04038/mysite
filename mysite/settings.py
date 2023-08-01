@@ -25,12 +25,14 @@ SECRET_KEY = "django-insecure-2&0bjm4)*t4n)a-queh=p-)cn3vq^5om=zuduio5&k@=qmyx-(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
+SITE_ID = 1
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -42,7 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.sitemaps",
     'django.contrib.postgres',
-    'account.apps.AccountConfig',
+    'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +150,8 @@ PASSWORD_HASHERS = [
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
