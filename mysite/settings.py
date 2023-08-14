@@ -35,6 +35,10 @@ ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 SITE_ID = 1
 
 INSTALLED_APPS = [
+    "payment.apps.PaymentConfig",
+    "orders.apps.OrdersConfig",
+    "cart.apps.CartConfig",
+    "shop.apps.ShopConfig",
     "actions.apps.ActionsConfig",
     "images.apps.ImagesConfig",
     "account.apps.AccountConfig",
@@ -53,10 +57,10 @@ INSTALLED_APPS = [
     "django_extensions",
     "easy_thumbnails",
     "debug_toolbar",
-    "shop.apps.ShopConfig",
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -79,6 +83,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "cart.context_processors.cart",
             ],
         },
     },
@@ -192,3 +197,9 @@ INTERNAL_IPS = [
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 0
+
+CART_SESSION_ID = 'cart'
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51NepHHDOQvJYjCryvzWq0oCOYQTV1D5ch0Y8cE1pzbHhmHxuufZwyb38MzXjLghU0QCXmGcegbIsU3oII8y8aLq200aHZaZwG8'  # Publishable key
+STRIPE_SECRET_KEY = 'sk_test_51NepHHDOQvJYjCrypFS8czVpgGmcGqAwY1RUsBSdVsQFlZRsELmpk4a3s6zaSzRKAmrW8WqKiLtRxMTUv0ujwymZ00ZDmMU76m'       # Secret key
+STRIPE_API_VERSION = '2022-11-15'
