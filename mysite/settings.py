@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 SITE_ID = 1
 
 INSTALLED_APPS = [
+    "coupons.apps.CouponsConfig",
     "payment.apps.PaymentConfig",
     "orders.apps.OrdersConfig",
     "cart.apps.CartConfig",
@@ -203,5 +204,7 @@ CART_SESSION_ID = 'cart'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51NepHHDOQvJYjCryvzWq0oCOYQTV1D5ch0Y8cE1pzbHhmHxuufZwyb38MzXjLghU0QCXmGcegbIsU3oII8y8aLq200aHZaZwG8'  # Publishable key
 STRIPE_SECRET_KEY = 'sk_test_51NepHHDOQvJYjCrypFS8czVpgGmcGqAwY1RUsBSdVsQFlZRsELmpk4a3s6zaSzRKAmrW8WqKiLtRxMTUv0ujwymZ00ZDmMU76m'       # Secret key
 STRIPE_API_VERSION = '2022-11-15'
+
+CELERY_TASK_ALWAYS_EAGER = True
 
 STRIPE_WEBHOOK_SECRET = 'whsec_b10e9e0e5b958f2a229ab66240ff055a720a082fc4b45e1873b490a9a423c5af'
